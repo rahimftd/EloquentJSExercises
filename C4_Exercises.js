@@ -45,11 +45,10 @@ function reverseArray(arr) {
 
 function reverseArrayInPlace(arr) {
 	var tempArr = arr.slice(0);
-	arr = [];
+	var arrIndex = 0;
 
 	for (var i = tempArr.length - 1; i >= 0; i--) {
-		arr.push(tempArr[i]);
+		arr[arrIndex] = tempArr[i];
+		arrIndex++;
 	}
-	
-	return arr;
 }
