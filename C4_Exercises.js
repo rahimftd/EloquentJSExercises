@@ -52,3 +52,35 @@ function reverseArrayInPlace(arr) {
 		arrIndex++;
 	}
 }
+
+//A List
+
+function arrayToList(arr) {
+	if (arr.length === 0) {
+		return null;
+	} else {
+		return {
+			value: arr[0],
+			rest: arrayToList(arr.slice(1))
+		};
+	}
+}
+
+function listToArray(list) {
+	var tempList = list;
+	var arr = [];
+
+	while (tempList.rest !== null) {
+		arr.push(tempList.value);
+		tempList = tempList.rest;
+	}
+
+	arr.push(tempList.value);
+
+	return arr;
+}
+
+
+
+
+
