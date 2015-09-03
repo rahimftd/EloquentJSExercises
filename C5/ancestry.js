@@ -44,3 +44,35 @@ var ANCESTRY_FILE = "[\n  " + [
 // `require(./path/to/ancestry.js)` will get you the array.
 if (typeof module != "undefined" && module.exports)
   module.exports = ANCESTRY_FILE;
+
+var ancestry = JSON.parse(ANCESTRY_FILE);
+
+function filter(array, test) {
+  var passedTest = [];
+
+  for (var i = 0; i < array.length; i++) {
+    if(test(array[i])) {
+      passedTest.push(array[i]);
+    }
+  }
+  return passedTest;
+}
+
+function map(array, transform) {
+  var mappedArr = [];
+
+  for (var i = 0; i < array.length; i++) {
+    mappedArr.push(transform(array[i]));
+  }
+  return mappedArr;
+}
+
+function reduce(array, combineFunc, start) {
+  var current = start;
+
+  for (var i = 0; i < array.length; i++) {
+    current = combineFunc(current, array[i]);
+  }
+
+  return current;
+}
