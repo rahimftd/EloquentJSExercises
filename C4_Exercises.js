@@ -80,6 +80,40 @@ function listToArray(list) {
 	return arr;
 }
 
+function prepend(elem, list) {
+	return {
+		value: elem,
+		rest: list
+	};
+}
+
+function nth(list, index) {
+	if (index === 0) {
+		return list.value;
+	} else if (list.rest === null) {
+		return undefined;
+	} else {
+		return nth(list.rest, index - 1);
+	}
+}
+
+//In progress:
+
+function deepEqual(val1, val2) {
+	if (typeof val1 !== typeof val2) {
+		return false;
+	} else if (typeof val1 === "object") {
+		for (var elem in val1) {
+			if (val1[elem] != val2[elem]) {
+				return false;
+			}
+			return true;
+		}
+	} else {
+		return val1 === val2;
+	}
+}
+
 
 
 
